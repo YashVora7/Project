@@ -13,7 +13,7 @@ app.set("views",__dirname+"/view")
 app.use(express.urlencoded({extended:true}))
 
 
-app.use(userRoute)
+app.use("/user",userRoute)
 
 let PORT = process.env.PORT
 
