@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 require('dotenv').config()
-let URL =  process.env.Offline_URL
+let URL =  process.env.Online_URL
 
 
 const connect = async ()=>{

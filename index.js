@@ -1,11 +1,15 @@
 const express = require("express")
 const connect = require("./config/db")
+const cookie = require("cookie-parser")
 const userRoute = require("./routes/user.route")
+
+
 require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
+app.use(cookie())
 
 app.set("view engine", "ejs")
 app.set("views",__dirname+"/view")
