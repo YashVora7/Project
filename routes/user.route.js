@@ -9,6 +9,6 @@ userRoute.post("/reg",register)
 userRoute.get("/reg",registerUi)
 userRoute.post("/login",login)
 userRoute.get("/login",loginUi)
-userRoute.get("/auth",auth,productUi)
+userRoute.get("/private",auth,productUi)
 
 module.exports = userRoute
