@@ -2,6 +2,7 @@ const express = require("express")
 const connect = require("./config/db")
 const cookie = require("cookie-parser")
 const userRoute = require("./routes/user.route")
+const proRoute = require("./routes/product.route")
 
 
 require('dotenv').config()
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.use("/user",userRoute)
+app.use("/product",proRoute)
 
 let PORT = process.env.PORT
 

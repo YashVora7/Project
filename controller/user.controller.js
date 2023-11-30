@@ -42,7 +42,7 @@ const login = async(req,res)=>{
         bcrypt.compare(password,data.password,(err,result)=>{
             if(result){
                 let token = jwt.sign({id:data._id},"secret")
-                res.cookie("token",token).redirect("/user/auth")
+                res.cookie("token",token).redirect("/product/pro")
             }
             else{
                 res.send("Password is incorrect")
