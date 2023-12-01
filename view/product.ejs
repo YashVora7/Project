@@ -10,8 +10,33 @@
         <input type="text" placeholder="title" name="title">
         <input type="text" placeholder="Description" name="desc">
         <input type="url" placeholder="Image" name="img">
-        <input type="number" placeholder="Price" name="Price">
+        <input type="number" placeholder="Price" name="price">
         <input type="submit">
     </form>
+
+    <div id="products"></div>
+
 </body>
+
+<script>
+    fetch("/product/products")
+    .then((res) => res.json())
+    .then((data) =>{
+        data.map((ele)=>{
+            let h3 = document.createElement("h3")
+            h3.innerHTML = ele.title;
+            let img = document.createElement("img")
+            img.src = ele.img;
+            img.setAttribute("width","100px")
+            let h4 = document.createElement("h4")
+            h4.innerHTML = ele.desc;
+            let p = document.createElement("p")
+            p.innerHTML = ele.price;
+            let div = document.createElement("div")
+            div.append(h3 , h4 , p , img)
+            document.getElementById("products").append(div)
+        })
+    })
+</script>
+
 </html>
