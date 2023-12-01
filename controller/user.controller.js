@@ -4,61 +4,61 @@ const jwt = require("jsonwebtoken")
 
 const bcrypt = require("bcrypt")
 
-const registerUi = (req,res) =>{
+const registerUi = (req, res) => {
     res.render("signup")
 }
 
-const register = async(req,res)=>{
-    let {username,email,password} = req.body
+const register = async (req, res) => {
+    let { username, email, password } = req.body
 
-    let data = await userModel.findOne({email:email})
+    let data = await userModel.findOne({ email: email })
 
-    if(data){
+    if (data) {
         res.redirect("/user/login")
     }
 
-    else{
-        bcrypt.hash(password,5,async(err,hash)=>{
+    else {
+        bcrypt.hash(password, 5, async (err, hash) => {
 
             let obj = {
-                username : username,
-                email : email,
-                password : hash
+                username: username,
+                email: email,
+                password: hash
             }
-    
+
             let value = await userModel.create(obj)
-            res.send({msg : "User Created Successfully",data : value})
+            res.send({ msg: "User Created Successfully", data: value })
         })
     }
 
 }
 
-const login = async(req,res)=>{
-    let {email,password} = req.body
+const login = async (req, res) => {
+    let { email, password } = req.body
 
-    let data = await userModel.findOne({email : email})
+    let data = await userModel.findOne({ email: email })
 
-    if(data){
-        bcrypt.compare(password,data.password,(err,result)=>{
-            if(result){
-                let token = jwt.sign({id:data._id},"secret")
-                res.cookie("token",token).redirect("/product/pro")
+    if (data) {
+        bcrypt.compare(password, data.password, (err, result) => {
+            if (result) {
+                let token = jwt.sign({ id: data._id }, "secret")
+                res.cookie("token", token).redirect("/product/pro")
             }
-            else{
+            else {
                 res.send("Password is incorrect")
             }
         })
     }
-    else{
+    else {
         res.redirect("/user/reg")
     }
 }
 
-const loginUi = (req,res) =>{
+const loginUi = (req, res) => {
     res.render("login")
 }
-const productUi = (req,res)=>{
+const productUi = (req, res) => {
     res.render("product")
 }
 
-module.exports = {register,registerUi,login,loginUi,productUi}
+module.exports = { register, registerUi, login, loginUi, productUi }

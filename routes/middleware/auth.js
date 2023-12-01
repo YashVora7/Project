@@ -1,17 +1,17 @@
 let jwt = require('jsonwebtoken')
 
-const auth = (req,res,next) =>{
+const auth = (req, res, next) => {
     let token = req.cookies.token
 
-    if(token){
-        let decode = jwt.verify(token,"secret")
+    if (token) {
+        let decode = jwt.verify(token, "secret")
         req.body.userID = decode.id
         next()
     }
-    else{
+    else {
         res.redirect("/user/login")
     }
 
 }
 
-module.exports = {auth}
+module.exports = { auth }

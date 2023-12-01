@@ -13,17 +13,17 @@ app.use(express.json())
 app.use(cookie())
 
 app.set("view engine", "ejs")
-app.set("views",__dirname+"/view")
+app.set("views", __dirname + "/view")
 
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 
-app.use("/user",userRoute)
-app.use("/product",proRoute)
+app.use("/user", userRoute)
+app.use("/product", proRoute)
 
 let PORT = process.env.PORT
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     connect()
     console.log(`Server on ${PORT}`);
 })
