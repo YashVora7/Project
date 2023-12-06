@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 15px;
+            background-image: radial-gradient(circle farthest-corner at 10% 20%,
+                    rgba(253, 101, 133, 1) 0%,
+                    rgba(255, 211, 165, 1) 90%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/product/products">Products</a>
+        <a href="/product/cart">Cart</a>
+        <a href="/user/profile">Profile</a>
+        <a href="/user/login">Login</a>
+        <a href="/user/reg">Signup</a>
+    </nav>
+</body>
+
+</html>
